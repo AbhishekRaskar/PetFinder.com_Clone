@@ -6,30 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getShelterData } from "../../Redux/shelterReducer/action";
 import { useLocation, useSearchParams } from "react-router-dom";
 
-const ShelterList = () => {
-  // const [hosteldata, setHostelData] = useState([]);
-
-  // const getData = async () => {
-  //   try {
-  //     // setLoading(true)
-
-  //     let res = await fetch(
-  //       `https://real-pink-donkey-coat.cyclic.app/shelters`
-  //     );
-  //     let resData = await res.json();
-  //     console.log(resData.data);
-  //     setHostelData(resData.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //     // setError(true);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+const ShelterList = ({page}) => {
   const [searchParams] = useSearchParams();
-  const data = useSelector((store) => store.shelterReducer.shelterData);
+  const data = useSelector(
+    (store) => store.shelterReducer.shelterData.shelters
+  );
+  console.log(data);
   const isLoading = useSelector((store) => store.shelterReducer.isLoading);
 
   const location = useLocation();
@@ -38,12 +20,9 @@ const ShelterList = () => {
 
   const paramObj = {
     params: {
-      // search: searchParams.get("search"),
+      page : page,
       location: searchParams.getAll("location"),
-      sortBy : searchParams.get("price"),
-      order : searchParams.get("order")
-      // sortBy: searchParams.get("price"),
-      // sortOrder: searchParams.get(""),
+      order: searchParams.get("order"),
     },
   };
   console.log(paramObj);
@@ -52,10 +31,6 @@ const ShelterList = () => {
   useEffect(() => {
     dispatch(getShelterData(paramObj));
   }, [searchParams]);
-
-  // console.log(data.data, "hiiii");
-  var Data = data.data;
-  // console.log(isLoading);
 
   return isLoading ? (
     <Box>
@@ -77,7 +52,7 @@ const ShelterList = () => {
         columns={{ sm: 2, md: 3, lg: 4, base: 1 }}
         spacing="15px"
       >
-        {Data?.map((item) => {
+        {data?.map((item) => {
           return <ShelterCard key={item.id} {...item} />;
         })}
       </SimpleGrid>

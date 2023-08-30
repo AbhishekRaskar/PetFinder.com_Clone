@@ -5,19 +5,25 @@ import { Box } from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
 import ShelterList from "./ShelterList";
 import Pagination from "./Pagination";
+import { useSelector } from "react-redux";
 
 export const Shelter = () => {
   const [searchparam] = useSearchParams();
   const initpage = searchparam.get("page");
+  const currPage = useSelector(
+    (store) => store.shelterReducer.shelterData.currentPage
+  );
+  console.log(currPage, "currPage");
   const [page, setpage] = useState(initpage || 1);
+  console.log(page, "page");
 
   return (
     <Box style={{ display: "flex", flexDirection: "column" }}>
       <Box
         style={{
           display: "flex",
-          flexWrap: "wrap", 
-          gap: "10px", 
+          flexWrap: "wrap",
+          gap: "10px",
           marginBottom: "10px",
         }}
       >
@@ -25,8 +31,8 @@ export const Shelter = () => {
           style={{
             boxShadow:
               "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-            flex: "0 0 calc(15% - 10px)", 
-            marginBottom: "10px", 
+            flex: "0 0 calc(15% - 10px)",
+            marginBottom: "10px",
           }}
         >
           <Sidebar page={page} />
@@ -36,11 +42,11 @@ export const Shelter = () => {
           style={{
             boxShadow:
               "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-            flex: "1", 
+            flex: "1",
             marginBottom: "10px",
           }}
         >
-          <ShelterList />
+          <ShelterList page={page} />
         </Box>
       </Box>
 

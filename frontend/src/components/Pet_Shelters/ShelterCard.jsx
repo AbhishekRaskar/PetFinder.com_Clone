@@ -102,14 +102,16 @@ const ShelterCard = ({ name, image, rating, location, price }) => {
                   </Text>
                 </Stack>
                 <Stack spacing={0} align={"center"}>
-                  <Heading fontSize={"md"} textColor={"b"} color={"black.500"}>
+                  <Heading fontSize={"20px"} textColor={"b"} color={"black.500"}>
                     {location}
+                  </Heading>
+                  <br />
+                  <Heading fontSize={"xl"} textColor={"b"} color={"black.500"}>
+                    ₹.&nbsp;{price}
                   </Heading>
                 </Stack>
               </Stack>
-              <Heading fontSize={"md"} textColor={"b"} color={"black.500"}>
-                ₹{price}
-              </Heading>
+
               <Button
                 w={"full"}
                 mt={8}
