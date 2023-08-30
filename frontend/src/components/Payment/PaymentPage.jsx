@@ -30,7 +30,6 @@ const PaymentsPage = () => {
       width={"50%"}
       p={8}
     >
-
       <Heading mb={4} textAlign={"center"}>
         Payment Information
       </Heading>

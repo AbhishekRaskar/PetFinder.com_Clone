@@ -18,27 +18,27 @@ const Sidebar = ({ page }) => {
   const [search, setSearch] = useState("");
   const initLocation = searchParma.getAll("location");
   let initialOrder = searchParma.get("order");
-  
+
   const [location, setLocation] = useState(initLocation || []);
 
   const [order, setOrder] = useState(initialOrder || "");
   const [sortBy, setSortBy] = useState("price");
-  
 
   useEffect(() => {
     const params = {
       location,
+      page,
     };
 
     order && (params.order = order);
-    sortBy && (params.sortBy = sortBy)
 
-    // search && (serchparams.search = search);
-    // location && (serchparams.location = location);
-    // sortBy && (serchparams.sortBy = sortBy);
-    // sortOrder && (serchparams.sortOrder = "");
     setSearchParams(params);
-  }, [location, order,sortBy]);
+  }, [location, order, sortBy, page]);
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+  };
 
   const handalCity = (e) => {
     const { value } = e.target;
@@ -50,14 +50,6 @@ const Sidebar = ({ page }) => {
       newLocation.push(value);
     }
     setLocation(newLocation);
-
-    // let newcity = [...location];
-
-    // if (newcity.includes(value)) {
-    //   newcity = newcity.filter((el) => el !== value);
-    // } else {
-    //   newcity.push(value);
-    // }
   };
 
   const handalsort = (e) => {
@@ -65,10 +57,9 @@ const Sidebar = ({ page }) => {
     console.log(value, "value");
     setOrder(value);
 
-    // console.log(e);
-    // setSortOrder(e);
     console.log(order);
   };
+  console.log(search);
 
   return (
     <Box height={"100vh"}>
@@ -80,10 +71,11 @@ const Sidebar = ({ page }) => {
       >
         <InputGroup>
           <Input
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleSearch}
             placeholder="Search Shelter"
             size="sm"
             padding={"10px"}
+            value={search}
           />
         </InputGroup>
       </Box>
@@ -136,12 +128,12 @@ const Sidebar = ({ page }) => {
             </Checkbox>
             <Checkbox
               onChange={handalCity}
-              value={"Bangalore"}
+              value={"Banglore"}
               size="sm"
               colorScheme="purple"
-              checked={location.includes("Bangalore")}
+              checked={location.includes("Banglore")}
             >
-              Bangalore
+              Banglore
             </Checkbox>
             <Checkbox
               onChange={handalCity}
@@ -201,6 +193,15 @@ const Sidebar = ({ page }) => {
           </RadioGroup> */}
           <h3>Sort by Price</h3>
           <div onChange={handalsort}>
+            <div>
+              <input
+                type="radio"
+                name="order"
+                value={""}
+                defaultChecked={order === ""}
+              />
+              <label>All</label>
+            </div>
             <div>
               <input
                 type="radio"
