@@ -4,8 +4,6 @@ import { Box } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAdoptionData } from "../../Redux/adoptionReducer/action";
 
-
-
 const arr = [
   {
     dogs_breed: "Affenpinscher",
@@ -835,10 +833,13 @@ const Filters = () => {
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const [breed, setBreed] = useState("");
+
   console.log(breed);
   let store = useSelector((store) => store.adoptionPetsReducer.adoptionData);
   console.log(store);
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     const data = {
       params: {
@@ -848,7 +849,7 @@ const Filters = () => {
       },
     };
     dispatch(getAdoptionData(data));
-  }, [gender]);
+  }, [gender, age, breed]);
   return (
     <div className="FilterDiv">
       <Box className="FilterBox">
@@ -884,22 +885,12 @@ const Filters = () => {
       <Box className="FilterBox">
         <label>GOOD WITH</label>
         <select>
-          <option className="optionAny">any</option>
+          <option className="optionAny">Any</option>
           <option value="Kids">Kids</option>
           <option value="Other Dogs">Other Dogs</option>
           <option value="Cats">Cats</option>
         </select>
       </Box>
-
-      {/* <Box className='FilterBox'>
-        <label>Color</label>
-        <select  >
-          <option className='optionAny'>any</option>
-          <option value="Male">Kids</option>
-          <option value="Female">Other Dogs</option>
-          <option value="Female">Cats</option>
-        </select>
-      </Box> */}
 
       <Box className="FilterBox">
         <label>CARE & BEHAVIOR</label>
@@ -907,17 +898,6 @@ const Filters = () => {
           <option className="optionAny">Any</option>
           <option value="House-trained">House-trained</option>
           <option value="Specail Needs">Special Needs</option>
-        </select>
-      </Box>
-
-      <Box className="FilterBox">
-        <label>DAYS ON PETFINDER</label>
-        <select>
-          <option className="optionAny">Any</option>
-          <option value="1">1</option>
-          <option value="7">7</option>
-          <option value="14">14</option>
-          <option value="30+">30+</option>
         </select>
       </Box>
     </div>
