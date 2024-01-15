@@ -5,7 +5,9 @@ import { Footer } from './layout/Footer';
 function App() {
   return (
     <div className="App">
+      <br />
       <Navbar />
+      <br />
       <MainRoutes />
       <Footer />
     </div>

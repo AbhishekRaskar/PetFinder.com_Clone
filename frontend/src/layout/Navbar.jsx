@@ -5,6 +5,7 @@ import { AiTwotoneHeart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Dropdown } from "./Dropdownmenu";
 import { Sidebar } from "./Sidebar";
+import Logo from "../Images/PetConnects.png";
 
 export const Navbar = () => {
   const [statue, Setstatus] = useState(false);
@@ -28,18 +29,12 @@ export const Navbar = () => {
             alignItems={"center"}
             gap={"50px"}
           >
-            <Box w={"250px"} ml={"40px"}>
+            <Box w={"300px"} mt={"55px"}>
               <Link to={"/"}>
-                <Image
-                  src={
-                    "https://drive.google.com/uc?id=1RZumzqhGMEoL2aOB-RmBtT6wmO7G7VZf"
-                  }
-                  alt=""
-                  w={"100%"}
-                />
+                <Image src={Logo} alt="" w={"100%"} h={"100%"} />
               </Link>
             </Box>
-            <Box ml={10}>
+            <Box mb={8}>
               <Text fontWeight={"700"} fontSize={"20"} color={"#6504b5"}>
                 All About Pets
               </Text>
