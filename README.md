@@ -2,7 +2,7 @@
 
 Welcome to Pet Connects, your one-stop solution for pet adoption and temporary shelter services. Our mission is to connect pets with loving homes and provide secure accommodations for your furry friends. With an intuitive user interface and robust registration system, we aim to simplify the pet adoption and care process.
 
-**App Deployed Link:** [Pet Connects App](https://petconnects-chi.vercel.app/)
+**App Deployed Link:** [Pet Connects App](https://petconnects-kohl.vercel.app/)
 
 **Backend Link:** [Pet Connects Backend](https://petconnects-aml6.onrender.com/)
 
@@ -86,7 +86,7 @@ Our project leverages a diverse set of technologies to deliver a seamless experi
 
 We are dedicated to connecting pets with loving homes and ensuring the well-being of all animals. Explore our website to find your new furry family member or secure temporary shelter for your beloved pet.
 
-Visit our live site [Pet Connects App](https://petconnects-chi.vercel.app/) to experience Pet Connects in action!
+Visit our live site [Pet Connects App](https://petconnects-kohl.vercel.app/) to experience Pet Connects in action!
 
 If you need to access the backend for this project, you can find it [here](https://petconnects-aml6.onrender.com/).
 
